@@ -21,15 +21,14 @@ export default function Settings({ setShowSettings }) {
   }
   return (
     <div className="settings-overlay">
-      <div
-        onMouseDown={(e) => controlSettingsWindowMouseDown(e)}
-        onMouseUp={(e) => controlSettingsWindowMouseUp(e)}
-        className="settings-container"
-      >
+      <div className="settings-container">
         <div className="settings-header" draggable="true">
           <p>Settings</p>
           <button onClick={() => setShowSettings(false)}>&times;</button>
         </div>
+        <p style={{ margin: "100px", fontSize: "30px" }}>
+          Welcome, {localStorage.getItem("user").replaceAll('"', "")}
+        </p>
       </div>
     </div>
   );

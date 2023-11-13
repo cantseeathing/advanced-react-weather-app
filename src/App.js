@@ -1,11 +1,13 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import About from "./pages/About";
 import Main from "./pages/Main";
 import PageNotFound from "./pages/PageNotFound";
 import { useState } from "react";
-const API_KEY = "a8a33ec79eaa1b91cc0678875cb2b1c7";
+import Login from "./pages/Login";
+
 function App() {
   const [showSettings, setShowSettings] = useState(false);
+
   return (
     <Routes>
       <Route
@@ -24,6 +26,7 @@ function App() {
         }
       />
       <Route path="*" element={<PageNotFound />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 }

@@ -3,6 +3,7 @@ import "../App.css";
 import Header from "../components/Header";
 import Body from "../components/Body";
 import CountriesSelector from "../components/CountriesSelector";
+import { useNavigate } from "react-router-dom";
 const countriesList = [
   "Doha, Qatar",
   "Minsk, Belarus",
@@ -10,6 +11,10 @@ const countriesList = [
   "New York, USA",
 ];
 export default function Main({ showSettings, setShowSettings }) {
+  const navigate = useNavigate();
+  if (!localStorage?.getItem("user")) {
+    navigate("login");
+  }
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [showCountriesSelector, setShowCountriesSelector] = useState(false);
   useEffect(function () {
