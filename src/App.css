@@ -1,38 +1,278 @@
-.App {
-  text-align: center;
+.settings-container {
+  background-color: #d0a2f7;
+  width: 30rem;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  border: 1px solid black;
+  box-shadow: 10px 10px 5px #aaaaaa;
+  transition-duration: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(241, 234, 255, 0.9);
+  z-index: 1;
+  transition-duration: 500ms;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #f1eaff;
+}
+
+.settings-header {
+  & > p {
+    font-size: 30px;
+    font-family: "Courier New", Courier, monospace;
+    text-align: center;
+    display: inline-block;
+    margin: 20px 90px;
+  }
+  & > button {
+    float: left;
+    margin: 20px;
+    width: 50px;
+    font-size: 30px;
+    background-color: #f1eaff;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transition-duration: 500ms;
+    &:hover {
+      background-color: #d0a2f7;
+      cursor: pointer;
+      font-weight: bolder;
+    }
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  display: grid;
+  grid-template-columns: 1fr 10fr 2fr;
+  height: 100px;
+  align-items: center;
+  background-color: #d0a2f7;
+  & > p {
+    text-align: center;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    font-weight: bolder;
+    font-size: 50px;
+    letter-spacing: 10px;
+  }
+}
+
+.settings-icon {
+  transition-duration: 0.8s;
+  overflow: hidden;
+  transition-property: transform;
+  &:hover {
+    cursor: pointer;
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+  margin: auto 20px;
+}
+
+.add-image {
+  border-radius: 50%;
+  padding: 5px;
+  height: 50px;
+  aspect-ratio: 1;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &:hover {
+    cursor: pointer;
+    content: url("../public/icons/add-hover.svg");
+  }
+}
+
+.big {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 200px;
+}
+
+.app-body {
+  height: calc(100vh - 105px);
+}
+
+.countries-selection {
+  background-color: rgbargb(208, 162, 247, 0.1);
+  /* background-color: #d0a2f7; */
+  width: 30rem;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  border: 1px solid black;
+  box-shadow: 10px 10px 5px #aaaaaa;
+  transition-duration: auto;
+}
+
+.countries-selection-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(241, 234, 255, 0.9);
+  z-index: 1;
+  transition-duration: 500ms;
+}
+
+.countries-selection-header {
+  & > p {
+    font-size: 30px;
+    font-family: "Courier New", Courier, monospace;
+    text-align: center;
+    display: inline-block;
+    margin: 20px 50px;
+  }
+  & > button {
+    float: left;
+    margin: 20px;
+    width: 50px;
+    font-size: 30px;
+    background-color: #f1eaff;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transition-duration: 500ms;
+    &:hover {
+      background-color: #d0a2f7;
+      cursor: pointer;
+      font-weight: bolder;
+    }
+  }
+}
+
+.countries-selection-body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 50px;
 }
 
-.App-link {
-  color: #61dafb;
+.countries-list {
+  font-size: 30px;
+  margin: 20px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  transition-duration: 500ms;
+  background-color: #dcbfff;
+  &:hover {
+    cursor: pointer;
+    background-color: greenyellow;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
+.selected-country {
+  font-size: 30px;
+  margin: 20px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  transition-duration: 500ms;
+  background-color: greenyellow;
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(205, 122, 122);
+  }
+}
+
+.countries-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 500px;
+  width: max-content;
+  padding: 50px;
+  gap: 50px;
+  transition-duration: 500ms;
+}
+
+.country-card {
+  background-color: #dcbfff;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  align-items: center;
+  box-shadow: 10px 10px 5px #aaaaaa;
+  border: 1px solid #d0a2f7;
+  transition-duration: 500ms;
+}
+
+.country-name {
+  text-align: center;
+  margin: 50px auto;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: bolder;
+  font-size: 30px;
+  letter-spacing: 10px;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
+}
+
+.weather-status-img {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.weather-data {
+  margin-top: 50px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 30px;
 }

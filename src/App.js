@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Route, Routes } from "react-router-dom";
+import About from "./pages/About";
+import Main from "./pages/Main";
+import PageNotFound from "./pages/PageNotFound";
+import { useState } from "react";
+const API_KEY = "a8a33ec79eaa1b91cc0678875cb2b1c7";
 function App() {
+  const [showSettings, setShowSettings] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route
+        path="/about"
+        element={
+          <About
+            showSettings={showSettings}
+            setShowSettings={setShowSettings}
+          />
+        }
+      />
+      <Route
+        path="/"
+        element={
+          <Main showSettings={showSettings} setShowSettings={setShowSettings} />
+        }
+      />
+      <Route path="*" element={<PageNotFound />} />
+    </Routes>
   );
 }
 

@@ -1,0 +1,11 @@
+.message {
+  display: grid;
+  place-items: center;
+  height: 89vh;
+}
+
+.message > h1 {
+  font-family: fantasy;
+  font-size: 100px;
+  letter-spacing: 0.5cm;
+}
