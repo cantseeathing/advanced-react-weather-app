@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 export default function CountriesSelector({
   showCountriesSelector,
   setShowCountriesSelector,
@@ -18,12 +16,12 @@ export default function CountriesSelector({
       setSelectedCountries((countries) => [...countries, country]);
     }
   }
-  useEffect(
-    function () {
-      localStorage.setItem("selected", JSON.stringify([...selectedCountries]));
-    },
-    [selectedCountries]
-  );
+  // useEffect(
+  //   function () {
+  //     localStorage.setItem("selected", JSON.stringify([...selectedCountries]));
+  //   },
+  //   [selectedCountries]
+  // );
   function controlSettingsWindowMouseDown(e) {
     document.addEventListener("mousemove", moveSettingsWindow);
   }

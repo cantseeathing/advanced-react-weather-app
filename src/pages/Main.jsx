@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Body from "../components/Body";
 import CountriesSelector from "../components/CountriesSelector";
 import { useNavigate } from "react-router-dom";
+import useLocalStorage from "../components/useLocalStorage";
 const countriesList = [
   "Doha, Qatar",
   "Minsk, Belarus",
@@ -15,16 +16,9 @@ export default function Main({ showSettings, setShowSettings }) {
   if (!localStorage?.getItem("user")) {
     navigate("login");
   }
-  const [selectedCountries, setSelectedCountries] = useState([]);
+  const [selectedCountries, setSelectedCountries] = useLocalStorage([]);
   const [showCountriesSelector, setShowCountriesSelector] = useState(false);
-  useEffect(function () {
-    const selection = localStorage.getItem("selected");
-    if (selection) {
-      setSelectedCountries(JSON.parse(selection));
-    } else {
-      setSelectedCountries([]);
-    }
-  }, []);
+
   return (
     <div className="App">
       {showCountriesSelector && (
